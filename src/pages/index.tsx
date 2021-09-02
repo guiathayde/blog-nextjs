@@ -36,6 +36,7 @@ interface HomeProps {
 export default function Home({ postsPagination, preview }: HomeProps) {
   const [posts, setPosts] = useState(postsPagination.results);
   const [nextPage, setNextPage] = useState(postsPagination.next_page);
+
   function loadMorePosts(): void {
     fetch(nextPage)
       .then(response => response.json())
@@ -62,6 +63,7 @@ export default function Home({ postsPagination, preview }: HomeProps) {
         setNextPage(data.next_page);
       });
   }
+
   return (
     <>
       <Head>
